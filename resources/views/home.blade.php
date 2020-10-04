@@ -7,15 +7,19 @@
     <img src="https://scontent-ams4-1.cdninstagram.com/v/t51.2885-19/s150x150/97566921_2973768799380412_5562195854791540736_n.jpg?_nc_ht=scontent-ams4-1.cdninstagram.com&_nc_ohc=4xEg21iaFwkAX_HarSg&oh=33939ed5278871fa19d67f78349b0b1d&oe=5F99DCE7" class="rounded-circle">
    </div>
    <div class="col-9 p-5">
-       <div><h1>Instagram</h1></div>
+      <div class="d-flex justify-content-between allign-items-baseline">
+        <div><h1> {{ $user->username }} </h1></div>
+        <a href="#">Add New Post</a>
+      </div>
+       
        <div class="d-flex">
            <div class="pr-4"><strong>153</strong> posts</div>
            <div class="pr-4"><strong>23k</strong> followers</div>
            <div class="pr-4"><strong>212</strong> following</div>
        </div>
-       <div class="pt-4 font-weight-bold">Instagram</div>
-       <div>We're a global community of millions of people learning to code together. We're an open source, donor-supported, 501(c)(3) nonprofit.</div>
-       <div><a href="instagram.com">Instagram.com</a></div>
+       <div class="pt-4 font-weight-bold">{{$user->profile->title}}</div>
+       <div>{{$user->profile->description}}</div>
+       <div><a href="instagram.com">{{$user->profile->url}}</a></div>
 
        <div class="row pt-4">
           <div class="col-4 pr-4">
