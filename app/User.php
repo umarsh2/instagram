@@ -61,4 +61,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Profile::class);
     }
+
+
+    // for M:N perfect web solutions
+    public function roles()
+    {
+        // agr $primeryKey ko override kia hua ho to end pay id, id deni prhy gi...
+        return $this->belongsToMany(Role::class, 'role_user', 'role_id', 'user_id', 'id', 'id');
+    }
 }
