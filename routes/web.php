@@ -15,6 +15,9 @@
 
 Auth::routes();
 
+//uncomment bellow line to check the execution of TestService provider..
+//dd(app()->make("Hello"));
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
