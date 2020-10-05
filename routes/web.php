@@ -15,7 +15,16 @@
 
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/mw', 'HomeController@mw')->name('home')->middleware('test');
+Route::get('/mw2', 'HomeController@mw2');
+// this will also work fine for middleware....
+// Route::get('/mw',function(){
+// 	return view('mw');
+
+// })->middleware('test');
 
 Auth::routes();
 
