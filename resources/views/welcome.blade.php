@@ -94,6 +94,13 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <div class="bold">Below Navigation is comming from NavigationServiceProvider</div>
+                <div class="links">
+                    @foreach ($pages as $page)
+                    <a href="{{url($page->url)}}">{{$page->name}}</a>
+                    @endforeach
+                    
+                </div>
             </div>
         </div>
     </body>

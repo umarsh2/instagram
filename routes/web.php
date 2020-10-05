@@ -29,6 +29,13 @@ Route::get('/mw2', 'HomeController@mw2');
 
 // })->middleware('test');
 
+Route::get('/welcome',function(	
+)
+{
+	return view('welcome');
+}
+);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
