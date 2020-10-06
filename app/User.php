@@ -59,7 +59,7 @@ class User extends Authenticatable
     }
     public function following()
     {
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(Profile::class,'profile_user','profile_id','user_id');
     }
 
 

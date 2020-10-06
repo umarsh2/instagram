@@ -28,7 +28,9 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customer.create');
+        // we are doing it because in our include('customer.form'), customer will be undefined so it is a trick..
+        $customer = new Customer();
+        return view('customer.create', compact('customer'));
     }
 
     /**
@@ -94,7 +96,6 @@ class CustomerController extends Controller
         ]);
         $customer->name = $request['name'];
         $customer->email = $request['email'];
-        dd(public_path());
         if($request['image'])
         {
             $filePath = $request->file('image')->storePublicly('customers', 'public');
@@ -102,13 +103,13 @@ class CustomerController extends Controller
 
         }
 
-        $customer->update();
+        $updated = $customer->update();
         // Customer::update([
         //     'name' => $request['name'],
         //     'email' => $request['email'],
         //     'image' => $filePath,
         // ]);
-        return redirect('/customer');
+        return redirect('/customer/'.$customer->id);
     }
 
     /**
