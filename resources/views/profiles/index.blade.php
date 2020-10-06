@@ -9,7 +9,6 @@
    <div class="col-9 p-5">
       <div class="d-flex justify-content-between allign-items-baseline">
         <div><h1> {{ $user->username }} </h1></div>
-        {{dd($user)}}
         <button class="btn btn-primary ml-4 follow-button">{{$follow}}</button>
         <a href="{{url('/p/create')}}">Add New Post</a>
       </div>

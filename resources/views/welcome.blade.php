@@ -101,6 +101,8 @@
                     @endforeach
                     
                 </div>
+
+                <a href="/customers">Customer Resource</a>
             </div>
         </div>
     </body>

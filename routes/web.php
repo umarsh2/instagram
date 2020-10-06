@@ -49,3 +49,6 @@ Route::get('/follow/{user}', 'FollowsController@store');
 Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::patch('profile/{user}/', 'ProfilesController@update')->name('profile.update');
 
+// resource routes for Customer model
+Route::resource("customer", "CustomerController");
+
