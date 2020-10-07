@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Create A New Customer') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/customer')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('customer.store')}}" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         @include('customer.form')

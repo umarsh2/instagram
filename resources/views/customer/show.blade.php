@@ -13,7 +13,7 @@
 </div>
 <a href="{{url('/customer')}}">Back</a><br>
 <a href="{{url('/customer')}}/{{$customer->id}}/edit">Edit Customer</a>
-<form method="POST" action="{{url('/customer')}}/{{$customer->id}}">
+<form method="POST" action="{{route('customer.destroy',$customer->id)}}">
 	@csrf
 	@method('DELETE')
 	<button type="submit">Delete Customer</button>

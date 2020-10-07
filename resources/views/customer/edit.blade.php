@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Edit Customer Details') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/customer')}}/{{$customer->id}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('customer.update',$customer->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
 

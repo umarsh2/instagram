@@ -13,4 +13,4 @@ Click Below Customers for Details...
 </ul>
 
 
-<a href="{{url('/customer/create')}}">Add New Customer</a>
+<a href="{{route('customer.create')}}">Add New Customer</a>
