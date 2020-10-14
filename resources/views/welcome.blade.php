@@ -102,7 +102,7 @@
                     
                 </div>
 
-                <a href="/customers">Customer Resource</a>
+                <a href="{{url('/customer')}}">Customer Resource</a>
             </div>
         </div>
     </body>

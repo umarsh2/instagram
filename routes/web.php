@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Auth::routes();
 //hm nay Game ko bind kia apny service container k sath or phr make k through usay get kr lia...
 // hmari yh Game binding app() ko dd kr k daikhi ja skti hai.
@@ -78,3 +76,14 @@ Route::patch('profile/{user}/', 'ProfilesController@update')->name('profile.upda
 // resource routes for Customer model
 Route::resource("customer", "CustomerController");
 
+
+
+// search k bad jo mrzi enter kro.. serach/umar/nawaz => umar/nawaz
+Route::get('search/{search}', function ($search) {
+    return $search;
+})->where('search', '.*');
+
+
+Route::fallback(function () {
+    return "No route match so it is a default or fallback route..";
+});
