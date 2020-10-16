@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -38,4 +39,31 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // after adding this code we will be able to use username to login
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'username';
+    }
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        $roles = $user->roles->pluck('name')->toArray();
+        if(in_array("publisher", $roles))
+            $this->redirectTo = "/xyz";
+        else
+            $this->redirectTo = "/abc";
+    }
+
 }

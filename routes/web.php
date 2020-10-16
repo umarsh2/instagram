@@ -64,14 +64,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show')->middleware('auth');
 
-Route::get('/','PostsController@index');
-Route::get('/p/create','PostsController@create');
-Route::post('/p','PostsController@store');
-Route::get('/follow/{user}', 'FollowsController@store');
-Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
-Route::patch('profile/{user}/', 'ProfilesController@update')->name('profile.update');
+Route::get('/','PostsController@index')->middleware('auth');
+Route::get('/p/create','PostsController@create')->middleware('auth');
+Route::post('/p','PostsController@store')->middleware('auth');
+Route::get('/follow/{user}', 'FollowsController@store')->middleware('auth');
+Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit')->middleware('auth');
+Route::patch('profile/{user}/', 'ProfilesController@update')->name('profile.update')->middleware('auth');
 
 // resource routes for Customer model
 Route::resource("customer", "CustomerController");
