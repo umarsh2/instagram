@@ -30,3 +30,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+// axios.get('api/country',{
+// 	'headers':{
+// 		'Accept':'application/json',
+// 		'Authorization': 'Bearer 65f904f85c27c556e6642982a3c8691b06fa53d1517d0c5c8994e914e3835cd0'
+// 	}
+// }).then(res=>console.dir(res.data));

@@ -60,10 +60,10 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $roles = $user->roles->pluck('name')->toArray();
-        if(in_array("publisher", $roles))
-            $this->redirectTo = "/xyz";
-        else
-            $this->redirectTo = "/abc";
+        if(in_array("admin", $roles))
+        {
+            $this->redirectTo = "/admin";
+        }
     }
 
 }

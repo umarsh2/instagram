@@ -15,9 +15,9 @@ class test
      */
     public function handle($request, Closure $next)
     {
-        $ip = $request->ip();
-        if($ip == '::1')
-            return redirect('/mw2');
+        // $ip = $request->ip();
+        // if($ip == '::11')
+        //     return redirect('/mw2');
         return $next($request);
     }
 }

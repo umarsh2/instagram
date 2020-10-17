@@ -30,7 +30,6 @@ class ProfilePolicy
      */
     public function view(User $user, Profile $profile)
     {
-        //
     }
 
     /**
@@ -41,7 +40,7 @@ class ProfilePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user;
     }
 
     /**
@@ -54,7 +53,7 @@ class ProfilePolicy
     public function update(User $user, Profile $profile)
     {
         //
-        return $user->id == $profile->user_id;
+        return $user->id === $profile->user_id;
     }
 
     /**
@@ -66,7 +65,7 @@ class ProfilePolicy
      */
     public function delete(User $user, Profile $profile)
     {
-        //
+        return $user->id === $profile->user_id;
     }
 
     /**
@@ -79,6 +78,7 @@ class ProfilePolicy
     public function restore(User $user, Profile $profile)
     {
         //
+        return $user->id === $profile->user_id;
     }
 
     /**

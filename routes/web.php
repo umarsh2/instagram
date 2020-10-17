@@ -22,16 +22,16 @@ Auth::routes();
 }); */
 //dd(app()->make('Game'));
 
-class Football{}
-class Game{
-	public function __construct(Football $football)
-	{
-		return $this->football = $football;
-	}
-}
-app()->bind('Game',function(){
-	return new Game(new Football);
-});
+// class Football{}
+// class Game{
+// 	public function __construct(Football $football)
+// 	{
+// 		return $this->football = $football;
+// 	}
+// }
+// app()->bind('Game',function(){
+// 	return new Game(new Football);
+// });
 //dd(app()->make('Game'));
 
 // this resolve function is very important, age hm yh likhy to hm na bind function ki zrurt na he make function ki..
@@ -43,10 +43,10 @@ app()->bind('Game',function(){
 //dd(app()->make("Hello"));
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::match(['GET','POST'],'/home', 'HomeController@index')->name('home');
 
-Route::get('/mw', 'HomeController@mw')->name('home')->middleware('test');
-Route::get('/mw2', 'HomeController@mw2');
+// Route::get('/mw', 'HomeController@mw')->name('home')->middleware('test');
+// Route::get('/mw2', 'HomeController@mw2');
 // this will also work fine for middleware....
 // Route::get('/mw',function(){
 // 	return view('mw');
@@ -60,18 +60,19 @@ Route::get('/welcome',function(
 }
 );
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show')->middleware('auth');
 
-Route::get('/','PostsController@index')->middleware('auth');
-Route::get('/p/create','PostsController@create')->middleware('auth');
-Route::post('/p','PostsController@store')->middleware('auth');
-Route::get('/follow/{user}', 'FollowsController@store')->middleware('auth');
-Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit')->middleware('auth');
-Route::patch('profile/{user}/', 'ProfilesController@update')->name('profile.update')->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+Route::get('/','PostsController@index');
+Route::get('/p/create','PostsController@create');
+Route::post('/p','PostsController@store');
+Route::get('/follow/{user}', 'FollowsController@store');
+Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+Route::patch('profile/{user}/', 'ProfilesController@update')->name('profile.update');
+});
+
 
 // resource routes for Customer model
 Route::resource("customer", "CustomerController");
@@ -87,3 +88,6 @@ Route::get('search/{search}', function ($search) {
 Route::fallback(function () {
     return "No route match so it is a default or fallback route..";
 });
+Route::get("/admin",function(){
+	return 'admin dashbord';
+})->middleware('password.confirm');

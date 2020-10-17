@@ -15,10 +15,10 @@ class AuthKey
      */
     public function handle($request, Closure $next)
     {
-        $token = $request->header('APP_KEY');
-        return response()->json(["token"=>$token]);
-        if($token!=null)
-            return response()->json(["message"=> "app key not found"],401);
+        // $token = $request->header('APP_KEY');
+        // return response()->json(["token"=>$token]);
+        // if($token!=null)
+        //     return response()->json(["message"=> "app key not found"],401);
         return $next($request);
     }
 }

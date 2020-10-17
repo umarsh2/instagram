@@ -23,4 +23,4 @@ Route::post("country","CountryController@store");
 Route::put("country/{country}", "CountryController@update");
 Route::delete("country/{country}", "CountryController@destroy");
 */
-Route::apiResource("country","CountryController");
+Route::apiResource("country","CountryController")->middleware('auth:api');

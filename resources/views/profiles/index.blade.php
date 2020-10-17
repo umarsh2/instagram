@@ -10,9 +10,14 @@
       <div class="d-flex justify-content-between allign-items-baseline">
         <div><h1> {{ $user->username }} </h1></div>
         <button class="btn btn-primary ml-4 follow-button">{{$follow}}</button>
+        @can("isAllowed",$user->id)
         <a href="{{url('/p/create')}}">Add New Post</a>
+        @endcan
       </div>
+        @can("isAllowed",$user->id)
         <a href="{{url('/profile/').'/'.$user->id.'/edit'}}">Edit Profile</a>
+        @endcan
+
        <div class="d-flex">
            <div class="pr-4"><strong>{{$user->posts->count()}}</strong> posts</div>
            <div class="pr-4"><strong>23k</strong> followers</div>
